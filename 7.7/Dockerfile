@@ -3,7 +3,7 @@ FROM ubuntu:16.04
 MAINTAINER Jérémy Jacquier-Roux <jeremy.jacquier-roux@bonitasoft.org>
 
 RUN groupadd -r install -g 1001 \
-  && useradd -u 1001 -r -g install -d /opt/bonita/ -s /sbin/nologin -c "Bonita User" install
+  && useradd -u 1001 -r -g install -d /opt/install/ -s /sbin/nologin -c "install User" install
   
 # install packages
 RUN apt-get update && apt-get install -y \
