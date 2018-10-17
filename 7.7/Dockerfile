@@ -2,8 +2,9 @@ FROM ubuntu:16.04
 
 MAINTAINER Jérémy Jacquier-Roux <jeremy.jacquier-roux@bonitasoft.org>
 
-RUN groupadd -r install -g 1001 \
-  && useradd -u 1001 -r -g install -d /opt/install/ -s /sbin/nologin -c "install User" install
+# create user to launch Bonita as non-root
+RUN groupadd -r bonita -g 1000 \
+  && useradd -u 1000 -r -g bonita -d /opt/bonita/ -s /sbin/nologin -c "Bonita User" bonita
   
 # install packages
 RUN apt-get update && apt-get install -y \
@@ -16,10 +17,6 @@ RUN apt-get update && apt-get install -y \
   && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir /opt/custom-init.d/
-
-# create user to launch Bonita as non-root
-RUN groupadd -r bonita -g 1000 \
-  && useradd -u 1000 -r -g bonita -d /opt/bonita/ -s /sbin/nologin -c "Bonita User" bonita
 
 # grab gosu
 RUN gpg --keyserver ha.pool.sks-keyservers.net --recv-keys B42F6819007F00F88E364FD4036A9C25BF357DD4
