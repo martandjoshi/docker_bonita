@@ -4,8 +4,12 @@ MAINTAINER Jérémy Jacquier-Roux <jeremy.jacquier-roux@bonitasoft.org>
 
 # create user to launch Bonita as non-root
 RUN groupadd -r bonita -g 1000 \
-  && useradd -u 1000 -r -g bonita -d /opt/bonita/ -s /sbin/nologin -c "Bonita User" bonita
-  
+  && useradd -u 1000 -r -g bonita -s /sbin/nologin -c "Bonita User" bonita
+
+RUN mkdir /opt/bonita
+
+RUN cd /opt/bonita/
+
 # install packages
 RUN apt-get update && apt-get install -y \
   mysql-client-core-5.7 \
