@@ -3,8 +3,8 @@ FROM ubuntu:16.04
 MAINTAINER Jérémy Jacquier-Roux <jeremy.jacquier-roux@bonitasoft.org>
 
 # create user to launch Bonita as non-root
-RUN groupadd -r bonita -g 1000 \
-  && useradd -u 1000 -r -g bonita -s /sbin/nologin -c "Bonita User" bonita
+#RUN groupadd -r bonita -g 1000 \
+#  && useradd -u 1000 -r -g bonita -s /sbin/nologin -c "Bonita User" bonita
 
 RUN mkdir /opt/bonita
 
